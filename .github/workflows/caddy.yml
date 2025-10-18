@@ -32,7 +32,7 @@ jobs:
       - name: Extract Caddy version
         id: caddy_version
         run: |
-          version=$(grep '^FROM caddy:' caddy/Dockerfile | sed 's/^FROM caddy://; s/-builder-alpine.*//')
+          version=$(grep '^FROM caddy:' caddy/Dockerfile | sed 's/^FROM caddy://; s/-builder-alpine.*//' | head -n1)
           echo "version=$version" >> $GITHUB_OUTPUT
 
       - name: Build and push
